@@ -1,0 +1,52 @@
+Core Libraries to Install (inside the activated cv_env):
+Use pip, Python's package installer.
+OpenCV:
+Bash
+
+pip install opencv-python
+(This installs the main modules. opencv-contrib-python includes extra modules, but opencv-python is fine to start.)
+NumPy: (OpenCV usually installs it as a dependency, but good to know)
+Bash
+
+pip install numpy
+Matplotlib: (For displaying images and plots)
+Bash
+
+pip install matplotlib
+IDE/Editor:
+VS Code: Excellent, free, with great Python support.
+PyCharm: Another powerful IDE (Community edition is free).
+Jupyter Notebook/JupyterLab: Great for interactive learning and visualization. To use with your virtual environment:
+Make sure pip is up to date and install Jupyter inside the activated virtual environment:
+Bash
+
+pip install --upgrade pip
+pip install jupyterlab notebook
+Then, to run JupyterLab: jupyter lab
+To run Jupyter Notebook: jupyter notebook
+Testing Your Setup:
+Create a Python file (e.g., test_setup.py) in your my_cv_journey directory with the following code:
+Python
+
+# test_setup.py
+import cv2
+import numpy as np
+import matplotlib
+
+print("OpenCV version:", cv2.__version__)
+print("NumPy version:", np.__version__)
+print("Matplotlib version:", matplotlib.__version__)
+
+# Create a simple blank NumPy array (like a tiny black image)
+# 30x30 pixels, 3 color channels (for BGR by default in OpenCV)
+# uint8 means unsigned 8-bit integer (0-255)
+blank_image = np.zeros((30, 30, 3), dtype=np.uint8)
+print("Successfully created a NumPy array for an image.")
+print("Shape of array:", blank_image.shape)
+
+print("\nSetup seems OK! You're ready for Week 2.")
+Run it from your terminal (make sure cv_env is still activated):
+Bash
+
+python test_setup.py
+If it prints the versions and the messages without errors, you're good to go!

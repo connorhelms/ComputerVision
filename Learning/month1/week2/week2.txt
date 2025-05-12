@@ -1,0 +1,81 @@
+Goal for Month 1, Week 2:
+
+Learn how to load images from files into Python using OpenCV.
+Understand how to access basic image properties like dimensions and pixel values.
+Learn two methods for displaying images: OpenCV's built-in windows and Matplotlib plots.
+Understand the BGR vs. RGB color channel difference between OpenCV and Matplotlib.
+Learn how to save image data back to a file.
+Detailed Breakdown for Month 1, Week 2 (with Code Snippets):
+
+1. Loading Images with OpenCV (Estimated time: 3-4 hours)
+
+Core Function: cv2.imread(filepath, flags)
+
+filepath: A string containing the path to the image file (e.g., "images/cat.jpg" or "C:/Users/YourUser/Pictures/photo.png").
+Tip: Use forward slashes / even on Windows, or escape backslashes \\. Relative paths are often easiest for project structures.
+flags: An optional argument specifying how the image should be read. Common flags:
+cv2.IMREAD_COLOR (or 1): Loads the image in BGR color format (3 channels). Any transparency is ignored. This is the default flag.
+cv2.IMREAD_GRAYSCALE (or 0): Loads the image as grayscale (1 channel).
+cv2.IMREAD_UNCHANGED (or -1): Loads the image as is, including the alpha (transparency) channel if present (e.g., for PNG files).
+Return Value: A NumPy array representing the image data. If the image cannot be read (file not found, corrupted file, wrong permissions), it returns None. 
+
+
+
+2. Accessing Image Properties (Estimated time: 1-2 hours)
+
+Since cv2.imread returns a NumPy array, you use standard NumPy attributes and indexing.
+
+Dimensions: The .shape attribute tells you the dimensions.
+
+For a grayscale image: (height, width)
+For a BGR/color image: (height, width, channels) (where channels is usually 3)
+For an image loaded with IMREAD_UNCHANGED (like PNG with transparency): (height, width, 4) (BGRA)
+Total Pixels: .size attribute gives the total number of elements (pixels * channels).
+
+Data Type: .dtype attribute tells you the data type of the pixels (e.g., uint8 for standard 8-bit images).
+
+Accessing Individual Pixels: Use NumPy indexing image[row, column].
+
+For grayscale: Returns the intensity value.
+For BGR: Returns a list/array [Blue, Green, Red]
+
+
+
+3. Displaying Images (Estimated time: 4-5 hours)
+
+Method 1: Using OpenCV (cv2.imshow)
+Creates a native OS window to display the image.
+cv2.imshow(window_name, image): Displays the image (NumPy array) in a window titled window_name. If the window doesn't exist, it's created.
+cv2.waitKey(delay_ms): Crucial! This waits for a key press for delay_ms milliseconds.
+If delay_ms is 0, it waits indefinitely until any key is pressed.
+If delay_ms is > 0, it waits for that duration. If a key is pressed during that time, it returns the ASCII code of the key; otherwise, it returns -1.
+Why it's needed: cv2.imshow needs cv2.waitKey to actually process the GUI events required to draw the image and handle window interactions. Without it, the window might appear blank or unresponsive, or flash and disappear.
+cv2.destroyAllWindows(): Closes all windows created by OpenCV. Good practice to call this at the end of your script or when you're done displaying. cv2.destroyWindow(window_name) closes a specific window.
+Limitations: Can be buggy in some environments (especially remote servers, some notebook setups).
+
+Method 2: Using Matplotlib (plt.imshow)
+Integrates image display into Matplotlib's plotting capabilities.
+Works well inline in Jupyter notebooks.
+Provides standard plot controls (saving, zooming - though interactive zoom might be limited for images).
+plt.imshow(image): Displays the image data.
+BIG CAVEAT: Color Order!
+OpenCV loads color images as BGR (Blue, Green, Red).
+Matplotlib expects images in RGB (Red, Green, Blue) order.
+If you display a BGR image directly with plt.imshow, the colors will look wrong (reds and blues swapped).
+Solution: Convert BGR to RGB before displaying using cv2.cvtColor(image, cv2.COLOR_BGR2RGB).
+For grayscale images, you should specify the colormap: plt.imshow(img_gray, cmap='gray').
+plt.title("My Title"), plt.xlabel("X axis"), etc. can be used.
+plt.show(): Actually displays the plot window (necessary when running as a script, often not needed cell-by-cell in Jupyter).
+
+
+
+4. Saving Images (Estimated time: 1-2 hours)
+
+Core Function: cv2.imwrite(filename, image, params)
+
+filename: String containing the path and name for the output file (e.g., "output/processed_image.png"). The file format is determined by the extension (.jpg, .png, etc.).
+image: The NumPy array (image data) to save.
+params (Optional): Format-specific parameters, like JPEG quality or PNG compression. Example: cv2.imwrite("output.jpg", img, [cv2.IMWRITE_JPEG_QUALITY, 90]) sets JPEG quality to 90 (out of 100).
+
+
+

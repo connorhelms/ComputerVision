@@ -1,0 +1,20 @@
+Image File Formats (Estimated time: 1-2 hours)
+
+Concept: Standardized ways to organize and store digital image data. They often involve compression to reduce file size.
+Common Formats:
+JPEG (.jpg, .jpeg):
+Lossy compression: Discards some image data to achieve smaller file sizes. Good for photographs.
+You can often choose the compression level (quality). Higher compression means smaller file but more data loss.
+PNG (.png):
+Lossless compression: No image data is lost. File sizes are generally larger than JPEGs for photos but can be smaller for images with large areas of flat color (like graphics or screenshots).
+Supports an alpha channel for transparency.
+GIF (.gif):
+Lossless for images with up to 256 distinct colors. Supports simple animations.
+TIFF (.tif, .tiff):
+Flexible, can be lossless or lossy. Supports multiple layers. Common in medical imaging and professional photography/printing.
+BMP (.bmp):
+Often uncompressed or uses simple lossless compression. Results in large files.
+Key Takeaway for Now: You'll mostly work with JPEGs and PNGs. The library you use (like OpenCV) will handle the details of reading these formats.
+Action/Learning Resources:
+Find an image on your computer. Try saving it as a JPEG (with varying quality settings if your software allows) and as a PNG. Compare file sizes and look closely for any quality differences.
+Read articles like "JPEG vs. PNG: Which Image Format is Better?"
