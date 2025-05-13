@@ -19,6 +19,7 @@ cv2.IMREAD_GRAYSCALE (or 0): Loads the image as grayscale (1 channel).
 cv2.IMREAD_UNCHANGED (or -1): Loads the image as is, including the alpha (transparency) channel if present (e.g., for PNG files).
 Return Value: A NumPy array representing the image data. If the image cannot be read (file not found, corrupted file, wrong permissions), it returns None. 
 
+@week2.py
 
 
 2. Accessing Image Properties (Estimated time: 1-2 hours)
@@ -39,7 +40,7 @@ Accessing Individual Pixels: Use NumPy indexing image[row, column].
 For grayscale: Returns the intensity value.
 For BGR: Returns a list/array [Blue, Green, Red]
 
-
+@week2.py
 
 3. Displaying Images (Estimated time: 4-5 hours)
 
@@ -67,7 +68,7 @@ For grayscale images, you should specify the colormap: plt.imshow(img_gray, cmap
 plt.title("My Title"), plt.xlabel("X axis"), etc. can be used.
 plt.show(): Actually displays the plot window (necessary when running as a script, often not needed cell-by-cell in Jupyter).
 
-
+@week2.py
 
 4. Saving Images (Estimated time: 1-2 hours)
 
